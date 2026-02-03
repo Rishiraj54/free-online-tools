@@ -3,22 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Online Tools – Created by RISHI RAJ</title>
+<title>Free Online Tools – Word Counter, Calculator, PDF Converter, Image Resizer</title>
+<meta name="description" content="Free Online Tools by RISHI RAJ: Word Counter, Calculator, Word to PDF, PDF to Word, Image Size Reducer, Character & Letter Counter. All tools are free, online, and easy to use.">
+<meta name="keywords" content="Word Counter, Calculator, PDF Converter, Word to PDF, PDF to Word, Image Resizer, Character Counter, Letter Counter, Online Tools, Free Tools">
+<meta name="robots" content="index, follow">
+<meta name="author" content="RISHI RAJ">
+
 <!-- jsPDF for Word→PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <!-- PDF.js for PDF→Word -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Free Online Tools by RISHI RAJ",
+  "url": "https://rishiraj54.github.io/free-online-tools/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://rishiraj54.github.io/free-online-tools/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f9fa; text-align:center;}
-  #splash {position: fixed; top:0; left:0; width:100%; height:100%; background:#1e90ff; color:white; display:flex; align-items:center; justify-content:center; font-size:2em; z-index:9999;}
-  header {padding:20px; background:#007bff; color:white; font-size:1.5em;}
-  .tools {padding:20px;}
-  .tool {margin:15px auto; padding:15px; background:white; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); max-width:600px;}
-  textarea,input {width:90%; padding:10px; margin:10px 0; font-size:1em;}
-  button {padding:10px 15px; margin:5px; font-size:1em; cursor:pointer; background:#007bff; color:white; border:none; border-radius:5px;}
-  .result {margin:10px; font-weight:bold;}
-  .adbox {margin:30px 0; text-align:center;}
-  footer {padding:15px; background:#007bff; color:white;}
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f9fa; text-align:center;}
+#splash {position: fixed; top:0; left:0; width:100%; height:100%; background:#1e90ff; color:white; display:flex; align-items:center; justify-content:center; font-size:2em; z-index:9999;}
+header {padding:20px; background:#007bff; color:white; font-size:1.5em;}
+.tools {padding:20px;}
+.tool {margin:15px auto; padding:15px; background:white; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); max-width:600px;}
+textarea,input {width:90%; padding:10px; margin:10px 0; font-size:1em;}
+button {padding:10px 15px; margin:5px; font-size:1em; cursor:pointer; background:#007bff; color:white; border:none; border-radius:5px;}
+.result {margin:10px; font-weight:bold; white-space: pre-wrap;}
+.adbox {margin:30px 0; text-align:center;}
+footer {padding:15px; background:#007bff; color:white;}
 </style>
 </head>
 <body>
@@ -26,11 +47,12 @@
 <!-- Splash screen -->
 <div id="splash">Created by RISHI RAJ</div>
 
-<header>Free Online Tools</header>
+<header>
+  <h1>Free Online Tools</h1>
+</header>
 
 <!-- TOP BANNER -->
 <div class="adbox">
-  <!-- Adsterra 300x250 -->
   <script>
     atOptions = {
       'key' : 'b927fa91a1503fb1b01bb9b366536d1b',
@@ -47,56 +69,61 @@
 
 <!-- Word Counter -->
 <div class="tool">
-  <h3>Word Counter</h3>
+  <h2>Word Counter</h2>
   <textarea id="wordText" placeholder="Type or paste text here..."></textarea><br>
   <button onclick="countWords()">Count Words & Characters</button>
   <div class="result" id="wordResult"></div>
+  <p>Quickly count words and characters in your text online.</p>
 </div>
 
 <!-- Calculator -->
 <div class="tool">
-  <h3>Calculator</h3>
+  <h2>Calculator</h2>
   <input type="text" id="calcInput" placeholder="Enter expression, e.g., 2+2">
   <button onclick="calculate()">Calculate</button>
   <div class="result" id="calcResult"></div>
+  <p>Simple online calculator for all arithmetic operations.</p>
 </div>
 
 <!-- Word → PDF -->
 <div class="tool">
-  <h3>Word → PDF</h3>
+  <h2>Word → PDF Converter</h2>
   <textarea id="pdfText" placeholder="Type text to convert to PDF"></textarea><br>
   <button onclick="downloadPDF()">Download PDF</button>
+  <p>Convert your text into PDF instantly, no software needed.</p>
 </div>
 
 <!-- PDF → Word -->
 <div class="tool">
-  <h3>PDF → Word</h3>
+  <h2>PDF → Word Converter</h2>
   <input type="file" id="pdfFile" accept=".pdf"><br>
   <button onclick="extractPDF()">Extract Text</button>
   <div class="result" id="pdfResult"></div>
+  <p>Extract text from PDF and copy it into Word online.</p>
 </div>
 
 <!-- Image Size Reducer -->
 <div class="tool">
-  <h3>Image Size Reducer</h3>
+  <h2>Image Size Reducer</h2>
   <input type="file" id="imgInput" accept="image/*"><br>
   <button onclick="resizeImage()">Resize Image</button>
   <div class="result" id="imgResult"></div>
+  <p>Reduce image size online without losing quality.</p>
 </div>
 
 <!-- Character & Letter Counter -->
 <div class="tool">
-  <h3>Character & Letter Counter</h3>
+  <h2>Character & Letter Counter</h2>
   <textarea id="charText" placeholder="Type text here..."></textarea><br>
   <button onclick="countChars()">Count</button>
   <div class="result" id="charResult"></div>
+  <p>Counts letters, characters, and spaces in your text.</p>
 </div>
 
 </div>
 
 <!-- BOTTOM BANNER -->
 <div class="adbox">
-  <!-- Adsterra 300x250 -->
   <script>
     atOptions = {
       'key' : 'b927fa91a1503fb1b01bb9b366536d1b',
@@ -141,7 +168,7 @@
     doc.save("document.pdf");
   }
 
-  // PDF → Word (basic text extraction)
+  // PDF → Word
   function extractPDF(){
     let file=document.getElementById('pdfFile').files[0];
     if(!file){ alert("Select a PDF file"); return; }
