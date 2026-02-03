@@ -4,58 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Online Tools – Created by RISHI RAJ</title>
+<!-- jsPDF for Word→PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- PDF.js for PDF→Word -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin:0;
-    padding:0;
-    background:#f8f9fa;
-    text-align:center;
-  }
-  /* Splash screen */
-  #splash {
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#1e90ff;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:2em;
-    z-index:9999;
-  }
-  /* Header */
-  header {
-    padding:20px;
-    background:#007bff;
-    color:white;
-    font-size:1.5em;
-  }
-  /* Tools section */
-  .tools {
-    padding:20px;
-  }
-  .tool {
-    margin:10px;
-    padding:15px;
-    background:white;
-    border-radius:8px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
-  }
-  /* Ad boxes */
-  .adbox {
-    margin:30px 0;
-    text-align:center;
-  }
-  /* Footer */
-  footer {
-    padding:15px;
-    background:#007bff;
-    color:white;
-  }
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f8f9fa; text-align:center;}
+  #splash {position: fixed; top:0; left:0; width:100%; height:100%; background:#1e90ff; color:white; display:flex; align-items:center; justify-content:center; font-size:2em; z-index:9999;}
+  header {padding:20px; background:#007bff; color:white; font-size:1.5em;}
+  .tools {padding:20px;}
+  .tool {margin:15px auto; padding:15px; background:white; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); max-width:600px;}
+  textarea,input {width:90%; padding:10px; margin:10px 0; font-size:1em;}
+  button {padding:10px 15px; margin:5px; font-size:1em; cursor:pointer; background:#007bff; color:white; border:none; border-radius:5px;}
+  .result {margin:10px; font-weight:bold;}
+  .adbox {margin:30px 0; text-align:center;}
+  footer {padding:15px; background:#007bff; color:white;}
 </style>
 </head>
 <body>
@@ -63,13 +26,11 @@
 <!-- Splash screen -->
 <div id="splash">Created by RISHI RAJ</div>
 
-<header>
-  Free Online Tools
-</header>
+<header>Free Online Tools</header>
 
 <!-- TOP BANNER -->
 <div class="adbox">
-  <!-- Your Adsterra 300x250 Banner -->
+  <!-- Adsterra 300x250 -->
   <script>
     atOptions = {
       'key' : 'b927fa91a1503fb1b01bb9b366536d1b',
@@ -83,17 +44,59 @@
 </div>
 
 <div class="tools">
-  <!-- Example tools -->
-  <div class="tool">Word Counter Tool</div>
-  <div class="tool">Text Reverser Tool</div>
-  <div class="tool">Character Counter Tool</div>
-  <div class="tool">Lorem Ipsum Generator</div>
-  <!-- Add more tools here -->
+
+<!-- Word Counter -->
+<div class="tool">
+  <h3>Word Counter</h3>
+  <textarea id="wordText" placeholder="Type or paste text here..."></textarea><br>
+  <button onclick="countWords()">Count Words & Characters</button>
+  <div class="result" id="wordResult"></div>
+</div>
+
+<!-- Calculator -->
+<div class="tool">
+  <h3>Calculator</h3>
+  <input type="text" id="calcInput" placeholder="Enter expression, e.g., 2+2">
+  <button onclick="calculate()">Calculate</button>
+  <div class="result" id="calcResult"></div>
+</div>
+
+<!-- Word → PDF -->
+<div class="tool">
+  <h3>Word → PDF</h3>
+  <textarea id="pdfText" placeholder="Type text to convert to PDF"></textarea><br>
+  <button onclick="downloadPDF()">Download PDF</button>
+</div>
+
+<!-- PDF → Word -->
+<div class="tool">
+  <h3>PDF → Word</h3>
+  <input type="file" id="pdfFile" accept=".pdf"><br>
+  <button onclick="extractPDF()">Extract Text</button>
+  <div class="result" id="pdfResult"></div>
+</div>
+
+<!-- Image Size Reducer -->
+<div class="tool">
+  <h3>Image Size Reducer</h3>
+  <input type="file" id="imgInput" accept="image/*"><br>
+  <button onclick="resizeImage()">Resize Image</button>
+  <div class="result" id="imgResult"></div>
+</div>
+
+<!-- Character & Letter Counter -->
+<div class="tool">
+  <h3>Character & Letter Counter</h3>
+  <textarea id="charText" placeholder="Type text here..."></textarea><br>
+  <button onclick="countChars()">Count</button>
+  <div class="result" id="charResult"></div>
+</div>
+
 </div>
 
 <!-- BOTTOM BANNER -->
 <div class="adbox">
-  <!-- Your Adsterra 300x250 Banner -->
+  <!-- Adsterra 300x250 -->
   <script>
     atOptions = {
       'key' : 'b927fa91a1503fb1b01bb9b366536d1b',
@@ -106,15 +109,93 @@
   <script src="https://www.highperformanceformat.com/b927fa91a1503fb1b01bb9b366536d1b/invoke.js"></script>
 </div>
 
-<footer>
-  &copy; 2026 RISHI RAJ
-</footer>
+<footer>&copy; 2026 RISHI RAJ</footer>
 
 <script>
-  // Splash screen fade out after 3 seconds
-  setTimeout(function(){
-    document.getElementById('splash').style.display = 'none';
-  },3000);
+  // Splash screen fade out
+  setTimeout(()=>{document.getElementById('splash').style.display='none';},3000);
+
+  // Word Counter
+  function countWords(){
+    let text=document.getElementById('wordText').value;
+    let words=text.trim().split(/\s+/).filter(w=>w.length>0);
+    document.getElementById('wordResult').innerText=`Words: ${words.length}, Characters: ${text.length}`;
+  }
+
+  // Calculator
+  function calculate(){
+    try{
+      let val=eval(document.getElementById('calcInput').value);
+      document.getElementById('calcResult').innerText=val;
+    }catch{
+      document.getElementById('calcResult').innerText='Invalid Expression';
+    }
+  }
+
+  // Word → PDF
+  function downloadPDF(){
+    const { jsPDF } = window.jspdf;
+    let doc=new jsPDF();
+    let text=document.getElementById('pdfText').value;
+    doc.text(text,10,10);
+    doc.save("document.pdf");
+  }
+
+  // PDF → Word (basic text extraction)
+  function extractPDF(){
+    let file=document.getElementById('pdfFile').files[0];
+    if(!file){ alert("Select a PDF file"); return; }
+    let reader=new FileReader();
+    reader.onload=function(e){
+      let typedarray=new Uint8Array(e.target.result);
+      pdfjsLib.getDocument(typedarray).promise.then(pdf=>{
+        let textContent=[];
+        let promises=[];
+        for(let i=1;i<=pdf.numPages;i++){
+          promises.push(pdf.getPage(i).then(page=>page.getTextContent().then(tc=>{
+            textContent.push(tc.items.map(item=>item.str).join(' '));
+          })));
+        }
+        Promise.all(promises).then(()=>{
+          document.getElementById('pdfResult').innerText=textContent.join('\n\n');
+        });
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  // Image Size Reducer
+  function resizeImage(){
+    let file=document.getElementById('imgInput').files[0];
+    if(!file){ alert("Select an image"); return; }
+    let reader=new FileReader();
+    reader.onload=function(e){
+      let img=new Image();
+      img.src=e.target.result;
+      img.onload=function(){
+        let canvas=document.createElement('canvas');
+        let MAX_WIDTH=500;
+        let scaleSize=MAX_WIDTH/img.width;
+        canvas.width=MAX_WIDTH;
+        canvas.height=img.height*scaleSize;
+        let ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        let reduced=canvas.toDataURL('image/jpeg',0.7);
+        let link=document.createElement('a');
+        link.href=reduced; link.download='reduced_image.jpg'; link.click();
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Character & Letter Counter
+  function countChars(){
+    let text=document.getElementById('charText').value;
+    let letters=text.replace(/[^A-Za-z]/g,"").length;
+    let characters=text.length;
+    let spaces=(text.match(/\s/g)||[]).length;
+    document.getElementById('charResult').innerText=`Letters: ${letters}, Characters: ${characters}, Spaces: ${spaces}`;
+  }
 </script>
 
 </body>
