@@ -2,207 +2,119 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Tools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free online tools including word counter, text tools, password generator and YouTube title generator.">
-<meta name="keywords" content="free tools, online tools, word counter, password generator">
-
+<title>Free Online Tools – Created by RISHI RAJ</title>
 <style>
-/* ===== SPLASH SCREEN ===== */
-#splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #020617;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  flex-direction: column;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-}
-#splash h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-#splash p {
-  font-size: 14px;
-  color: #94a3b8;
-}
-
-/* ===== MAIN SITE ===== */
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0f172a;
-  color:#e5e7eb;
-}
-header{
-  background:#020617;
-  padding:15px;
-  text-align:center;
-  font-size:22px;
-  font-weight:bold;
-}
-.container{
-  padding:20px;
-  max-width:900px;
-  margin:auto;
-}
-.tool{
-  background:#020617;
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:8px;
-}
-.tool h3{margin-top:0}
-textarea,input{
-  width:100%;
-  padding:10px;
-  margin-top:8px;
-  border-radius:6px;
-  border:none;
-  background:#0f172a;
-  color:#fff;
-}
-button{
-  margin-top:10px;
-  padding:10px;
-  border:none;
-  border-radius:6px;
-  background:#2563eb;
-  color:#fff;
-  cursor:pointer;
-}
-button:hover{background:#1d4ed8}
-.adbox{
-  margin:20px 0;
-  padding:15px;
-  background:#020617;
-  text-align:center;
-  color:#94a3b8;
-  font-size:13px;
-}
-footer{
-  margin-top:30px;
-  font-size:12px;
-  color:#94a3b8;
-  line-height:1.6;
-}
+  body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#f8f9fa;
+    text-align:center;
+  }
+  /* Splash screen */
+  #splash {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#1e90ff;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2em;
+    z-index:9999;
+  }
+  /* Header */
+  header {
+    padding:20px;
+    background:#007bff;
+    color:white;
+    font-size:1.5em;
+  }
+  /* Tools section */
+  .tools {
+    padding:20px;
+  }
+  .tool {
+    margin:10px;
+    padding:15px;
+    background:white;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  }
+  /* Ad boxes */
+  .adbox {
+    margin:30px 0;
+    text-align:center;
+  }
+  /* Footer */
+  footer {
+    padding:15px;
+    background:#007bff;
+    color:white;
+  }
 </style>
 </head>
-
 <body>
 
-<!-- SPLASH SCREEN -->
-<div id="splash">
-  <h1>Created by</h1>
-  <h1>RISHI RAJ</h1>
-  <p>Loading tools...</p>
+<!-- Splash screen -->
+<div id="splash">Created by RISHI RAJ</div>
+
+<header>
+  Free Online Tools
+</header>
+
+<!-- TOP BANNER -->
+<div class="adbox">
+  <!-- Your Adsterra 300x250 Banner -->
+  <script>
+    atOptions = {
+      'key' : 'b927fa91a1503fb1b01bb9b366536d1b',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/b927fa91a1503fb1b01bb9b366536d1b/invoke.js"></script>
 </div>
 
-<header>Free Online Tools</header>
-
-<div class="container">
-
-<div class="adbox">Advertisement Area</div>
-
-<div class="tool">
-<h3>Word & Character Counter</h3>
-<textarea id="wcText" placeholder="Type or paste text"></textarea>
-<p id="wcResult"></p>
-<button onclick="countWords()">Count</button>
+<div class="tools">
+  <!-- Example tools -->
+  <div class="tool">Word Counter Tool</div>
+  <div class="tool">Text Reverser Tool</div>
+  <div class="tool">Character Counter Tool</div>
+  <div class="tool">Lorem Ipsum Generator</div>
+  <!-- Add more tools here -->
 </div>
 
-<div class="tool">
-<h3>Text Case Converter</h3>
-<textarea id="caseText" placeholder="Enter text"></textarea>
-<button onclick="toUpper()">UPPERCASE</button>
-<button onclick="toLower()">lowercase</button>
+<!-- BOTTOM BANNER -->
+<div class="adbox">
+  <!-- Your Adsterra 300x250 Banner -->
+  <script>
+    atOptions = {
+      'key' : 'b927fa91a1503fb1b01bb9b366536d1b',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/b927fa91a1503fb1b01bb9b366536d1b/invoke.js"></script>
 </div>
-
-<div class="tool">
-<h3>Password Generator</h3>
-<input id="passLen" type="number" placeholder="Password length (e.g. 12)">
-<input id="passOut" readonly>
-<button onclick="generatePassword()">Generate</button>
-</div>
-
-<div class="tool">
-<h3>YouTube Title Generator</h3>
-<input id="ytTopic" placeholder="Video topic">
-<textarea id="ytTitle" readonly></textarea>
-<button onclick="generateTitle()">Generate Title</button>
-</div>
-
-<div class="tool">
-<h3>Character Counter</h3>
-<input id="charText" placeholder="Type text">
-<p id="charResult"></p>
-<button onclick="countChars()">Count</button>
-</div>
-
-<div class="adbox">Advertisement Area</div>
 
 <footer>
-<b>Disclaimer:</b><br>
-All tools run locally in your browser. No data is stored or sent to any server.
+  &copy; 2026 RISHI RAJ
 </footer>
 
-</div>
-
 <script>
-/* Splash Screen Timer */
-setTimeout(() => {
-  document.getElementById("splash").style.display = "none";
-}, 3000);
-
-/* Tools JS */
-function countWords(){
-  const text=document.getElementById("wcText").value.trim();
-  const words=text?text.split(/\s+/).length:0;
-  const chars=text.length;
-  document.getElementById("wcResult").innerText=
-    `Words: ${words} | Characters: ${chars}`;
-}
-function toUpper(){
-  document.getElementById("caseText").value=
-    document.getElementById("caseText").value.toUpperCase();
-}
-function toLower(){
-  document.getElementById("caseText").value=
-    document.getElementById("caseText").value.toLowerCase();
-}
-function generatePassword(){
-  const len=parseInt(document.getElementById("passLen").value)||12;
-  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-  let pass="";
-  for(let i=0;i<len;i++){
-    pass+=chars.charAt(Math.floor(Math.random()*chars.length));
-  }
-  document.getElementById("passOut").value=pass;
-}
-function generateTitle(){
-  const topic=document.getElementById("ytTopic").value;
-  if(!topic){alert("Enter topic");return;}
-  const titles=[
-    `How to ${topic} (Step by Step)`,
-    `${topic} – Complete Beginner Guide`,
-    `Top 5 Tips for ${topic}`,
-    `${topic} Explained in Simple Words`,
-    `Best Way to ${topic} in 2026`
-  ];
-  document.getElementById("ytTitle").value=
-    titles[Math.floor(Math.random()*titles.length)];
-}
-function countChars(){
-  const t=document.getElementById("charText").value;
-  document.getElementById("charResult").innerText=
-    `Characters: ${t.length}`;
-}
+  // Splash screen fade out after 3 seconds
+  setTimeout(function(){
+    document.getElementById('splash').style.display = 'none';
+  },3000);
 </script>
 
 </body>
